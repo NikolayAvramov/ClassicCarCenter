@@ -1,0 +1,77 @@
+.containerPage {
+	text-align: center;
+	background-image: url("../fonts/login-font.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100vw;
+	height: 80vh;
+}
+.registerWrapper {
+	margin-left: 500px;
+	color: darkorange;
+	padding-top: 1rem;
+	padding-bottom: 2rem;
+	margin-top: 2%;
+	border: 2px solid lightblue;
+	display: inline-block;
+	border-radius: 12px;
+	position: relative;
+}
+.registerBtn {
+	color: white;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	width: 160px;
+	border-radius: 10px;
+	background-color: rgb(11, 97, 133);
+	border: 1px solid rgb(168, 245, 227);
+	text-transform: uppercase;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.inputBox {
+	padding-top: 30px;
+	margin-top: 10px;
+}
+.title {
+	font-size: 40px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: rgb(253, 149, 111);
+}
+.inputBox input {
+	width: 100%;
+	padding: 7px;
+	border: 1px solid rgb(7, 134, 138);
+	background: transparent;
+	border-radius: 5px;
+	outline: none;
+	font-size: 1em;
+	color: gray;
+}
+.inputBox span {
+	position: absolute;
+	left: 0;
+	margin-left: 30px;
+	padding: 10px;
+	pointer-events: none;
+	font-size: 1em;
+	color: rgb(7, 134, 138);
+	text-transform: uppercase;
+	transition: 0.5s;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+	transform: translateX(10px) translateY(-7px);
+	color: rgb(7, 134, 138);
+	font-size: 0.5rem;
+	padding: 0px 13px;
+	border-left: 1px solid rgb(7, 134, 138);
+	border-right: 1px solid rgb(7, 134, 138);
+	background: rgb(255, 255, 255);
+}
+.form {
+	padding: 15px 30px;
+}
+.link {
+	text-decoration: none;
+	color: rgb(126, 185, 8);
+}
