@@ -1,8 +1,7 @@
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 
-import {register} from "../service/api.js";
-import {setUserData} from "../service/util.js";
+import {register} from "../../service/api.js";
 import RegisterCSS from "./Register.module.css";
 
 export function Register({setUser}) {
@@ -22,10 +21,7 @@ export function Register({setUser}) {
 		e.preventDefault();
 		const result = await register(formValues);
 		const data = await result.json();
-		console.log(data);
-		setUserData({data});
 		setUser(data);
-		console.log(data);
 		navigate("/");
 		return data;
 	}

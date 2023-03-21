@@ -1,21 +1,14 @@
-.containerPage {
-	text-align: center;
-	background-image: url("../fonts/login-font.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	width: 100vw;
-	height: 80vh;
-}
 .registerWrapper {
-	margin-left: 500px;
+	margin-left: 1200px;
 	color: darkorange;
 	padding-top: 1rem;
-	padding-bottom: 2rem;
-	margin-top: 2%;
+	padding-bottom: 1rem;
+	margin-top: 4%;
 	border: 2px solid lightblue;
 	display: inline-block;
 	border-radius: 12px;
 	position: relative;
+	background-color: white;
 }
 .registerBtn {
 	color: white;
@@ -27,6 +20,7 @@
 	border: 1px solid rgb(168, 245, 227);
 	text-transform: uppercase;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	margin-left: 110px;
 }
 .inputBox {
 	padding-top: 30px;
@@ -36,6 +30,7 @@
 	font-size: 40px;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	color: rgb(253, 149, 111);
+	text-align: center;
 }
 .inputBox input {
 	width: 100%;

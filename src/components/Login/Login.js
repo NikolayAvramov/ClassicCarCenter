@@ -1,9 +1,7 @@
 import LoginCSS from "./Login.module.css";
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
-
-import {login} from "../service/api.js";
-import {setUserData} from "../service/util.js";
+import {login} from "../../service/api.js";
 export function Login({setUser}) {
 	const navigate = useNavigate();
 	const [formValues, setFormValues] = useState({
@@ -23,8 +21,9 @@ export function Login({setUser}) {
 			setError(true);
 		} else {
 			setError(false);
-			setUserData({data});
+
 			navigate("/");
+			console.log({...data, ...formValues.email});
 			setUser(data);
 		}
 		return data;
