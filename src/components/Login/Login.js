@@ -23,7 +23,7 @@ export function Login({setUser}) {
 			setError(false);
 
 			navigate("/");
-			console.log({...data, ...formValues.email});
+			console.log(data);
 			setUser(data);
 		}
 		return data;

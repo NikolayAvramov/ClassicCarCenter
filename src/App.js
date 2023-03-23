@@ -8,6 +8,8 @@ import AppCss from "./App.module.css";
 import {useState} from "react";
 import {MyShowroom} from "./components/MyShowroom/MyShowroom.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {Card} from "./components/Card/Card.js";
+import {Details} from "./components/Details/Details.js";
 function App() {
 	const [user, setUser] = useState();
 	const authContextValues = {
@@ -17,12 +19,15 @@ function App() {
 	return (
 		<AuthContext.Provider value={authContextValues}>
 			<div className={AppCss.home}>
-				<Navigation />
-				<Routes>
-					<Route path="/login" element={<Login setUser={setUser} />} />
-					<Route path="/register" element={<Register setUser={setUser} />} />
-					<Route path="/my-showroom" element={<MyShowroom />} />
-				</Routes>
+				<Details />
+				{/* <Navigation />
+				<div className={AppCss.dynamic}>
+					<Routes>
+						<Route path="/login" element={<Login setUser={setUser} />} />
+						<Route path="/register" element={<Register setUser={setUser} />} />
+						<Route path="/my-showroom" element={<MyShowroom />} />
+					</Routes>
+				</div> */}
 			</div>
 		</AuthContext.Provider>
 	);

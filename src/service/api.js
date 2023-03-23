@@ -44,7 +44,8 @@ export async function logout() {
 }
 
 export async function create(data, sessionToken) {
-	const response = await fetch(host + "/classes/article", {
+	console.log(sessionToken);
+	const response = await fetch(host + "/classes/cars", {
 		method: "POST",
 		headers: {
 			"X-Parse-Application-Id": appID,

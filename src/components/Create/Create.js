@@ -1,28 +1,29 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-
+import {AuthContext} from "../../contexts/AuthContext.js";
 import CreateCSS from "./Create.module.css";
-
+import {useContext} from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 import Button from "react-bootstrap/Button";
+import {create} from "../../service/api.js";
 
 export function Create({setIsAdding}) {
+	const {user} = useContext(AuthContext);
+	console.log(user);
 	const navigate = useNavigate();
 	const [time, setTime] = useState("");
 	const [formValues, setFormValues] = useState({
+		owner: user.objectId,
 		views: 0,
-		title: "",
-		img1: "",
-		img2: "",
-		img3: "",
-		img4: "",
-		img5: "",
-		img6: "",
+		make: "",
+		model: "",
+		type: "",
 		price: 0,
 		description: "",
-		category: "",
-		condition: "",
-		expireAt: ""
+		location: "",
+		year: "",
+		img1: "",
+		img2: ""
 	});
 
 	async function createNew(e) {
@@ -30,13 +31,11 @@ export function Create({setIsAdding}) {
 		if (formValues.img1 === "") {
 			formValues.img1 = "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
 		}
-		const response = await create(formValues);
+		const response = await create(formValues, user.sessionToken);
 		const result = await response.json();
 		if (response.ok) {
 			navigate("/my-auctions");
 			setIsAdding(false);
-			const data = await getAllArticles();
-			setCards(data);
 		}
 
 		// 	{ "__type": "File", "name": "resume.txt" }
@@ -59,10 +58,10 @@ export function Create({setIsAdding}) {
 			<div className={CreateCSS.modal}>
 				<div className={CreateCSS.userContainer}>
 					<header className={CreateCSS.headers}>
-						<h2>Add new item</h2>
+						<h2>Add new car</h2>
 						<CloseButton onClick={onClickChange} />
 					</header>
-					<form>
+					<form onSubmit={createNew}>
 						<div className={CreateCSS.formRow}>
 							<div className={CreateCSS.formGroup}>
 								<label htmlFor="make">Make</label>
@@ -85,31 +84,15 @@ export function Create({setIsAdding}) {
 								{showMakeError && <p className={CreateCSS.formError}>Title should be at least 2 characters long!</p>}
 							</div>
 							<div className={CreateCSS.formGroup}>
-								<label htmlFor="category">Category</label>
+								<label htmlFor="category">Model</label>
 								<div className={CreateCSS.inputWrapper}>
-									<select name="category" value={formValues.category} onChange={onDataChange}>
-										<option value=""></option>
-										<option value="Electronics">Electronics</option>
-										<option value="Fashion">Fashion</option>
-										<option value="Home & Garden">Home & Garden</option>
-										<option value="Auto Parts & Accessories">Auto Parts & Accessories</option>
-										<option value="Musical Instruments">Musical Instruments</option>
-										<option value="Sport & Health">Sport & Health</option>
-										<option value="Toys & Hobbies">Toys & Hobbies</option>
-										<option value="Pet Supplies">Pet Supplies</option>
-										<option value="Antiques">Antiques</option>
-									</select>
+									<input id="model" name="model" type="text" value={formValues.model} onChange={onDataChange} />
 								</div>
 							</div>
 							<div className={CreateCSS.formGroup}>
-								<label htmlFor="condition">Condition</label>
+								<label htmlFor="type">Type</label>
 								<div className={CreateCSS.inputWrapper}>
-									<select name="condition" value={formValues.condition} onChange={onDataChange}>
-										<option value=""></option>
-										<option value="Brand New">Brand New</option>
-										<option value="Refurbished">Refurbished</option>
-										<option value="For parts or not working">For parts or not working</option>
-									</select>
+									<input id="type" name="type" type="text" value={formValues.type} onChange={onDataChange} />
 								</div>
 							</div>
 						</div>
@@ -135,7 +118,7 @@ export function Create({setIsAdding}) {
 								{showDescriptionError && <p className={CreateCSS.formError}>Description should be at least 30 characters long!</p>}
 							</div>
 							<div className={CreateCSS.formGroup}>
-								<label htmlFor="price">Strating Price</label>
+								<label htmlFor="price">Price</label>
 								<div className={CreateCSS.inputWrapper}>
 									<input
 										type="number"
@@ -151,85 +134,33 @@ export function Create({setIsAdding}) {
 										}}
 									/>
 								</div>
-								{showPriceError && <p className={CreateCSS.formError}>Strating Price must be greater than 0!</p>}
+								{showPriceError && <p className={CreateCSS.formError}>Price must be greater than 0!</p>}
 							</div>
 							<div className={CreateCSS.formGroup}>
-								<label htmlFor="time">Time</label>
+								<label htmlFor="location">Location</label>
 								<div className={CreateCSS.inputWrapper}>
-									<select
-										name="time"
-										id="name"
-										value={time}
-										onChange={e => {
-											setTime(e.target.value);
-											const newDate = setTimer(e.target.value);
-											setFormValues(state => ({...state, expireAt: newDate}));
-										}}
-									>
-										<option value=""></option>
-										<option value="12hr">12Hr</option>
-										<option value="24hr">24Hr</option>
-									</select>
+									<input id="location" name="location" type="text" value={formValues.location} onChange={onDataChange} />
 								</div>
 							</div>
 						</div>
 
 						<div className={CreateCSS.formRow}>
 							<div className={CreateCSS.formGroup}>
-								<label htmlFor="picture">Picture</label>
+								<label htmlFor="year">Year</label>
 								<div className={CreateCSS.inputWrapper}>
-									<span>
-										<FontAwesomeIcon icon={faImage} />
-									</span>
-									<input type="text" placeholder="Put url on your image here" name="img1" value={formValues.img1} onChange={onDataChange} />
+									<input type="number" name="year" value={formValues.year} onChange={onDataChange} />
 								</div>
 							</div>
 							<div className={CreateCSS.formGroup}>
-								<label htmlFor="picture">Picture</label>
+								<label htmlFor="image">Image</label>
 								<div className={CreateCSS.inputWrapper}>
-									<span>
-										<FontAwesomeIcon icon={faImage} />
-									</span>
-									<input type="text" placeholder="Put url on your image here" name="img2" value={formValues.img2} onChange={onDataChange} />
+									<input type="text" name="img1" value={formValues.img1} onChange={onDataChange} />
 								</div>
 							</div>
 							<div className={CreateCSS.formGroup}>
-								<label htmlFor="picture">Picture</label>
+								<label htmlFor="image">Image</label>
 								<div className={CreateCSS.inputWrapper}>
-									<span>
-										<FontAwesomeIcon icon={faImage} />
-									</span>
-									<input type="text" placeholder="Put url on your image here" name="img3" value={formValues.img3} onChange={onDataChange} />
-								</div>
-							</div>
-						</div>
-
-						<div className={CreateCSS.formRow}>
-							<div className={CreateCSS.formGroup}>
-								<label htmlFor="picture">Picture</label>
-								<div className={CreateCSS.inputWrapper}>
-									<span>
-										<FontAwesomeIcon icon={faImage} />
-									</span>
-									<input type="text" placeholder="Put url on your image here" name="img4" value={formValues.img4} onChange={onDataChange} />
-								</div>
-							</div>
-							<div className={CreateCSS.formGroup}>
-								<label htmlFor="picture">Picture</label>
-								<div className={CreateCSS.inputWrapper}>
-									<span>
-										<FontAwesomeIcon icon={faImage} />
-									</span>
-									<input type="text" placeholder="Put url on your image here" name="img5" value={formValues.img5} onChange={onDataChange} />
-								</div>
-							</div>
-							<div className={CreateCSS.formGroup}>
-								<label htmlFor="picture">Picture</label>
-								<div className={CreateCSS.inputWrapper}>
-									<span>
-										<FontAwesomeIcon icon={faImage} />
-									</span>
-									<input type="text" placeholder="Put url on your image here" name="img6" value={formValues.img6} onChange={onDataChange} />
+									<input type="text" name="img2" value={formValues.img2} onChange={onDataChange} />
 								</div>
 							</div>
 						</div>

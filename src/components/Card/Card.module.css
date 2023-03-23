@@ -1,0 +1,33 @@
+.card {
+	background-color: white;
+	margin: 0;
+	padding: 0;
+	margin-left: 2.5%;
+	height: 600px;
+	width: 22%;
+	border: 2px solid gray;
+	display: inline-block;
+	border-radius: 15px;
+	text-align: center;
+	margin-top: 2%;
+}
+.card img {
+	width: 100%;
+	border-radius: 15px;
+}
+.card p {
+	margin-bottom: 15px;
+}
+.card button {
+	margin-bottom: 70px;
+	background-color: rgb(193, 235, 142);
+	border-radius: 10px;
+}
+.views {
+	font-size: 17px;
+}
+.card h3 {
+	border-bottom: 1px solid gray;
+	width: 95%;
+	margin-left: 10px;
+}
