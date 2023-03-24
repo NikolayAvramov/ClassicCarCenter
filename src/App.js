@@ -18,16 +18,15 @@ function App() {
 
 	return (
 		<AuthContext.Provider value={authContextValues}>
-			<div className={AppCss.home}>
-				<Details />
-				{/* <Navigation />
-				<div className={AppCss.dynamic}>
-					<Routes>
-						<Route path="/login" element={<Login setUser={setUser} />} />
-						<Route path="/register" element={<Register setUser={setUser} />} />
-						<Route path="/my-showroom" element={<MyShowroom />} />
-					</Routes>
-				</div> */}
+			<Navigation />
+
+			<div className={AppCss.dynamic}>
+				<Routes>
+					<Route path="/login" element={<Login setUser={setUser} />} />
+					<Route path="/register" element={<Register setUser={setUser} />} />
+					<Route path="/my-showroom" element={<MyShowroom />} />
+					<Route path="/details/:id" element={<Details />} />
+				</Routes>
 			</div>
 		</AuthContext.Provider>
 	);

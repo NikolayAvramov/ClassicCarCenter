@@ -1,10 +1,9 @@
-.home {
+.dynamic {
 	background-image: url(./fonts/homePage.jpg);
 	width: 100vw;
 	height: 100vh;
+	padding-top: 60px;
 	background-repeat: no-repeat;
 	background-size: cover;
-}
-.dynamic {
 	padding-top: 90px;
 }

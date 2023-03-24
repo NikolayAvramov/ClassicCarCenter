@@ -7,9 +7,17 @@
 	color: white;
 	padding-left: 3px;
 	padding-right: 3px;
-	margin-left: 10px;
+	margin-left: 15px;
 }
 .wrapper {
+	padding-top: 6px;
+	width: 100vw;
+	height: 7vh;
+	background-color: aqua;
+}
+.linkWrapper {
+	background-color: red;
+	display: inline-block;
 	float: right;
-	margin-top: 10px;
+	padding-right: 30px;
 }
