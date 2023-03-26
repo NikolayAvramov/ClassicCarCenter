@@ -10,6 +10,7 @@ import {MyShowroom} from "./components/MyShowroom/MyShowroom.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Card} from "./components/Card/Card.js";
 import {Details} from "./components/Details/Details.js";
+import {Footer} from "./components/Footer/Footer.js";
 function App() {
 	const [user, setUser] = useState();
 	const authContextValues = {
@@ -28,6 +29,7 @@ function App() {
 					<Route path="/details/:id" element={<Details />} />
 				</Routes>
 			</div>
+			<Footer />
 		</AuthContext.Provider>
 	);
 }
