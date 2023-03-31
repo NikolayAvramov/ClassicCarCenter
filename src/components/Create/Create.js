@@ -5,13 +5,12 @@ import CreateCSS from "./Create.module.css";
 import {useContext} from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 import Button from "react-bootstrap/Button";
-import {create} from "../../service/api.js";
+import {create, getAll} from "../../service/dataService.js";
 
-export function Create({setIsAdding}) {
+export function Create({setIsAdding, setCars}) {
 	const {user} = useContext(AuthContext);
-	console.log(user);
+
 	const navigate = useNavigate();
-	const [time, setTime] = useState("");
 	const [formValues, setFormValues] = useState({
 		owner: user.objectId,
 		views: 0,
@@ -27,6 +26,12 @@ export function Create({setIsAdding}) {
 	});
 
 	async function createNew(e) {
+		async function takeAll() {
+			const result = await getAll();
+			setCars(result.results);
+			console.log(result.results);
+		}
+
 		e.preventDefault();
 		if (formValues.img1 === "") {
 			formValues.img1 = "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
@@ -34,8 +39,9 @@ export function Create({setIsAdding}) {
 		const response = await create(formValues, user.sessionToken);
 		const result = await response.json();
 		if (response.ok) {
-			navigate("/my-auctions");
+			navigate("/my-showroom");
 			setIsAdding(false);
+			takeAll();
 		}
 
 		// 	{ "__type": "File", "name": "resume.txt" }

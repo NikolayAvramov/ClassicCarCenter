@@ -1,108 +1,50 @@
+import FooterCss from "./Footer.module.css";
+import {FaFacebookF, FaSnapchatGhost} from "react-icons/fa";
+import {AiOutlineTwitter, AiFillInstagram} from "react-icons/ai";
+import {Link} from "react-router-dom";
 export function Footer() {
 	return (
-		<div className="container my-5">
-			<footer className="text-white text-center text-lg-start" style="background-color: #23242a;">
-				<div className="container p-4">
-					<div className="row mt-4">
-						<div className="col-lg-4 col-md-12 mb-4 mb-md-0">
-							<h5 className="text-uppercase mb-4">About company</h5>
+		<>
+			<div className={FooterCss.footerBasic}>
+				<footer>
+					<div className={FooterCss.social}>
+						<Link to="#">
+							<AiFillInstagram />
+						</Link>
+						<Link to="#">
+							<FaSnapchatGhost />
+						</Link>
+						<Link to="#">
+							<AiOutlineTwitter />
+						</Link>
 
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-
-							<p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.</p>
-
-							<div className="mt-4">
-								<a type="button" className="btn btn-floating btn-warning btn-lg">
-									<i className="fab fa-facebook-f"></i>
-								</a>
-
-								<a type="button" className="btn btn-floating btn-warning btn-lg">
-									<i className="fab fa-dribbble"></i>
-								</a>
-
-								<a type="button" className="btn btn-floating btn-warning btn-lg">
-									<i className="fab fa-twitter"></i>
-								</a>
-
-								<a type="button" className="btn btn-floating btn-warning btn-lg">
-									<i className="fab fa-google-plus-g"></i>
-								</a>
-							</div>
-						</div>
-
-						<div className="col-lg-4 col-md-6 mb-4 mb-md-0">
-							<h5 className="text-uppercase mb-4 pb-1">Search something</h5>
-
-							<div className="form-outline form-white mb-4">
-								<input type="text" id="formControlLg" className="form-control form-control-lg" />
-								<label className="form-label" for="formControlLg" style="margin-left: 0px;">
-									Search
-								</label>
-								<div className="form-notch">
-									<div className="form-notch-leading" style="width: 9px;"></div>
-									<div className="form-notch-middle" style="width: 48.8px;"></div>
-									<div className="form-notch-trailing"></div>
-								</div>
-							</div>
-
-							<ul className="fa-ul" style="margin-left: 1.65em;">
-								<li className="mb-3">
-									<span className="fa-li">
-										<i className="fas fa-home"></i>
-									</span>
-									<span className="ms-2">New York, NY 10012, US</span>
-								</li>
-								<li className="mb-3">
-									<span className="fa-li">
-										<i className="fas fa-envelope"></i>
-									</span>
-									<span className="ms-2">info@example.com</span>
-								</li>
-								<li className="mb-3">
-									<span className="fa-li">
-										<i className="fas fa-phone"></i>
-									</span>
-									<span className="ms-2">+ 01 234 567 88</span>
-								</li>
-								<li className="mb-3">
-									<span className="fa-li">
-										<i className="fas fa-print"></i>
-									</span>
-									<span className="ms-2">+ 01 234 567 89</span>
-								</li>
-							</ul>
-						</div>
-
-						<div className="col-lg-4 col-md-6 mb-4 mb-md-0">
-							<h5 className="text-uppercase mb-4">Opening hours</h5>
-
-							<table className="table text-center text-white">
-								<tbody className="font-weight-normal">
-									<tr>
-										<td>Mon - Thu:</td>
-										<td>8am - 9pm</td>
-									</tr>
-									<tr>
-										<td>Fri - Sat:</td>
-										<td>8am - 1am</td>
-									</tr>
-									<tr>
-										<td>Sunday:</td>
-										<td>9am - 10pm</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+						<Link to="#">
+							{" "}
+							<FaFacebookF />
+						</Link>
 					</div>
-				</div>
-
-				<div className="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-					© 2020 Copyright:
-					<a className="text-white" href="https://mdbootstrap.com/">
-						MDBootstrap.com
-					</a>
-				</div>
-			</footer>
-		</div>
+					<ul className={FooterCss.listInline}>
+						<li className={FooterCss.listInlineItem}>
+							<Link href="/">Home</Link>
+						</li>
+						<li className={FooterCss.listInlineItem}>
+							<Link href="#">Services</Link>
+						</li>
+						<li className={FooterCss.listInlineItem}>
+							<Link href="#">About</Link>
+						</li>
+						<li className={FooterCss.listInlineItem}>
+							<Link href="#">Terms</Link>
+						</li>
+						<li className={FooterCss.listInlineItem}>
+							<Link href="#">Privacy Policy</Link>
+						</li>
+					</ul>
+					<p className={FooterCss.copyright}>Nikolay Avramov © 2023</p>
+				</footer>
+			</div>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+		</>
 	);
 }

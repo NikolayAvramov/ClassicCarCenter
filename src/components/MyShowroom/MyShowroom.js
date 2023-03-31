@@ -1,26 +1,27 @@
 import MyShowroomCss from "./MyShowroom.module.css";
-import addCar from "../../fonts/Parking.png";
 import {Create} from "../Create/Create.js";
-import {useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Card} from "../Card/Card.js";
 
+import {ContentContext} from "../../contexts/ContentContext.js";
+import {AuthContext} from "../../contexts/AuthContext.js";
+
 export function MyShowroom() {
+	const {user} = useContext(AuthContext);
+
+	const {cars} = useContext(ContentContext);
 	const [isAdding, setIsAdding] = useState(false);
+	const myCars = cars.filter(car => car.owner === user.objectId);
 
 	return (
 		<div className={MyShowroomCss.wrapper}>
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
+			{myCars.map(car => {
+				return (
+					<div className={MyShowroomCss.card}>
+						<Card key={car.objectId} info={car} />
+					</div>
+				);
+			})}
 			{isAdding ? (
 				<Create setIsAdding={setIsAdding} />
 			) : (

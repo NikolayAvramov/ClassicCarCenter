@@ -1,0 +1,60 @@
+.footerBasic {
+	/* padding: 40px 0; */
+	background-color: #ffffff;
+	color: #4b4c4d;
+}
+
+.footerBasic ul {
+	padding: 0;
+	list-style: none;
+	text-align: center;
+	font-size: 18px;
+	line-height: 1;
+	margin-bottom: 0;
+}
+
+.footerBasic li {
+	padding: 0 10px;
+}
+
+.footerBasic ul a {
+	color: inherit;
+	text-decoration: none;
+	opacity: 0.8;
+}
+
+.footerBasic ul a:hover {
+	opacity: 1;
+}
+
+.footerBasic .social {
+	text-align: center;
+	/* padding-bottom: 20px; */
+}
+
+.footerBasic .social > a {
+	font-size: 24px;
+	width: 70px;
+	height: 20px;
+	line-height: 40px;
+	display: inline-block;
+	text-align: center;
+	margin: 0 8px;
+	color: inherit;
+	opacity: 0.75;
+}
+
+.footerBasic .social > a:hover {
+	opacity: 0.9;
+}
+
+.footerBasic .copyright {
+	margin-top: 15px;
+	text-align: center;
+	font-size: 13px;
+	color: #aaa;
+	margin-bottom: 0;
+}
+.listInlineItem {
+	display: inline-block;
+}
