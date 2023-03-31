@@ -6,7 +6,6 @@ export function Card({info}) {
 	const {user} = useContext(AuthContext);
 	const navigate = useNavigate();
 	function onDetailsClick(e) {
-		console.log(e);
 		navigate(`/details/${info.objectId}`);
 	}
 

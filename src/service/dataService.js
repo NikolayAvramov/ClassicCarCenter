@@ -32,7 +32,7 @@ export async function getAll() {
 }
 
 export async function getById(id) {
-	const response = await fetch(host + "classes/cars" + id, {
+	const response = await fetch(host + "classes/cars/" + id, {
 		method: "GET",
 		headers: {
 			"X-Parse-Application-Id": appID,
@@ -44,3 +44,4 @@ export async function getById(id) {
 	const result = await response.json();
 	return result;
 }
+export async function addView() {}

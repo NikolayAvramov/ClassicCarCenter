@@ -1,15 +1,17 @@
 /*panel*/
 .container {
-	background-color: #e8f3bf;
+	background-color: #afd81c;
+	width: 100vw;
+	height: 87vh;
 }
 .container section {
 	display: inline-block;
-	margin-left: 30px;
+	margin-left: 20px;
 }
 .imagePanel {
 	margin-top: 30px;
 	height: 87vh;
-	width: 47%;
+	width: 47vw;
 	text-align: center;
 }
 
@@ -25,9 +27,15 @@
 }
 
 .infoPanel {
+	position: absolute;
+	float: right;
 	height: 80vh;
-	width: 47%;
+	width: 47vw;
+	text-align: center;
 }
 button {
 	margin-left: 30px;
+}
+.spinner {
+	margin: 50% auto;
 }

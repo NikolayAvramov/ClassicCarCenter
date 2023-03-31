@@ -21,8 +21,7 @@ export function Create({setIsAdding, setCars}) {
 		description: "",
 		location: "",
 		year: "",
-		img1: "",
-		img2: ""
+		images: {}
 	});
 
 	async function createNew(e) {
@@ -33,8 +32,8 @@ export function Create({setIsAdding, setCars}) {
 		}
 
 		e.preventDefault();
-		if (formValues.img1 === "") {
-			formValues.img1 = "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
+		if (formValues.images.img1 === "") {
+			formValues.images.img1 = "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
 		}
 		const response = await create(formValues, user.sessionToken);
 		const result = await response.json();
@@ -160,13 +159,13 @@ export function Create({setIsAdding, setCars}) {
 							<div className={CreateCSS.formGroup}>
 								<label htmlFor="image">Image</label>
 								<div className={CreateCSS.inputWrapper}>
-									<input type="text" name="img1" value={formValues.img1} onChange={onDataChange} />
+									<input type="text" name="img1" value={formValues.images.img1} onChange={onDataChange} />
 								</div>
 							</div>
 							<div className={CreateCSS.formGroup}>
 								<label htmlFor="image">Image</label>
 								<div className={CreateCSS.inputWrapper}>
-									<input type="text" name="img2" value={formValues.img2} onChange={onDataChange} />
+									<input type="text" name="img2" value={formValues.images.img2} onChange={onDataChange} />
 								</div>
 							</div>
 						</div>
