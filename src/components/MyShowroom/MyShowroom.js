@@ -6,12 +6,24 @@ import {Card} from "../Card/Card.js";
 import {ContentContext} from "../../contexts/ContentContext.js";
 import {AuthContext} from "../../contexts/AuthContext.js";
 
+<<<<<<< Updated upstream
 export function MyShowroom() {
 	const {user} = useContext(AuthContext);
+=======
+export function MyShowroom({setCars}) {
+	const {myCars} = useContext(ContentContext);
+>>>>>>> Stashed changes
 
 	const {cars} = useContext(ContentContext);
 	const [isAdding, setIsAdding] = useState(false);
+<<<<<<< Updated upstream
 	const myCars = cars.filter(car => car.owner === user.objectId);
+=======
+
+	useEffect(() => {
+		getAll().then(result => setCars(result));
+	}, [isAdding]);
+>>>>>>> Stashed changes
 
 	return (
 		<div className={MyShowroomCss.wrapper}>

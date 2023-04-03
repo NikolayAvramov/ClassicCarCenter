@@ -5,6 +5,7 @@ import NavCSS from "./Navigation.module.css";
 import {logout} from "../../service/api.js";
 import {useNavigate} from "react-router-dom";
 import logo from "../../fonts/Untitled-1.png";
+import {getMessages} from "../../service/messageService.js";
 export function Navigation({setUser}) {
 	const navigate = useNavigate();
 	async function onLogoutClick() {
@@ -14,6 +15,12 @@ export function Navigation({setUser}) {
 		navigate("/");
 	}
 	const {user} = useContext(AuthContext);
+
+	async function click() {
+		const response = await getMessages(user.sessionToken);
+
+		console.log(response);
+	}
 
 	function onLogoClick() {
 		navigate("/");
@@ -62,7 +69,7 @@ export function Navigation({setUser}) {
 								</li>
 
 								<li className={NavCSS.li}>
-									<Link className={(NavCSS.links, NavCSS.dropdown)} to={"#"}>
+									<Link to={"/user/message"} className={(NavCSS.links, NavCSS.dropdown)}>
 										Messages
 									</Link>
 								</li>

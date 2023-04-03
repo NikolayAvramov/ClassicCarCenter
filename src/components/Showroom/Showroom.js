@@ -9,6 +9,13 @@ export function Showroom() {
 	const {user} = useContext(AuthContext);
 
 	const {cars} = useContext(ContentContext);
+<<<<<<< Updated upstream
+=======
+
+	// useEffect(() => {
+	// 	getAll().then(result => setCars(result));
+	// }, []);
+>>>>>>> Stashed changes
 	return (
 		<div className={ShowroomCss.wrapper}>
 			{cars.map(car => {

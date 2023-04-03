@@ -5,7 +5,7 @@ import CreateCSS from "./Create.module.css";
 import {useContext} from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 import Button from "react-bootstrap/Button";
-import {create, getAll} from "../../service/dataService.js";
+import {create} from "../../service/dataService.js";
 
 export function Create({setIsAdding, setCars}) {
 	const {user} = useContext(AuthContext);

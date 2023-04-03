@@ -17,15 +17,27 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {getAll} from "./service/dataService.js";
 import {Showroom} from "./components/Showroom/Showroom.js";
 import {Create} from "./components/Create/Create.js";
+<<<<<<< Updated upstream
+=======
+import {RouteGuards} from "./components/coman/RouteGuards.js";
+import {Edit} from "./components/Edit/Edit.js";
+import {Messages} from "./components/Messasges/Messages.js";
+>>>>>>> Stashed changes
 function App() {
 	const [user, setUser] = useState();
 	const [cars, setCars] = useState([]);
 	const authContextValues = {
 		user
 	};
+	let myCars = [];
+	if (cars) {
+		myCars = cars.filter(car => car.owner === user.objectId);
+	}
 	const contentValues = {
-		cars
+		cars,
+		myCars
 	};
+<<<<<<< Updated upstream
 	async function takeAll() {
 		const result = await getAll();
 		setCars(result.results);
@@ -35,6 +47,8 @@ function App() {
 		takeAll();
 	}, []);
 
+=======
+>>>>>>> Stashed changes
 	return (
 		<AuthContext.Provider value={authContextValues}>
 			<ContentContext.Provider value={contentValues}>
@@ -42,10 +56,21 @@ function App() {
 				<Routes>
 					<Route path="/login" element={<Login setUser={setUser} />} />
 					<Route path="/register" element={<Register setUser={setUser} />} />
+<<<<<<< Updated upstream
 					<Route path="/showroom" element={<Showroom />} />
 					<Route path="/create" element={<Create setCars={setCars} />} />
 					<Route path="/my-showroom" element={<MyShowroom />} />
 					<Route path="/details/:carId" element={<Details />} />
+=======
+					<Route path="/showroom" element={<Showroom setCars={setCars} />} />
+					<Route element={<RouteGuards />}>
+						<Route path="/create" element={<Create setCars={setCars} />} />
+						<Route path="/my-showroom" element={<MyShowroom setCars={setCars} />} />
+						<Route path="/edit/:id" element={<Edit />} />
+						<Route path="user/message" element={<Messages />} />
+					</Route>
+					<Route path="/details/:carId" element={<Details setCars={setCars} />} />
+>>>>>>> Stashed changes
 					<Route path="/" element={<Home />} />
 				</Routes>
 			</ContentContext.Provider>
