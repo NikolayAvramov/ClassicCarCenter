@@ -21,8 +21,8 @@
 	margin-left: 15px;
 }
 .secondaryImg div img {
-	width: 220px;
-	height: 190px;
+	width: 160px;
+	height: 120px;
 	border-radius: 10px;
 }
 
@@ -36,6 +36,8 @@
 button {
 	margin-left: 30px;
 }
-.spinner {
-	margin: 50% auto;
+
+.description {
+	font-size: 22px;
+	height: 300px;
 }

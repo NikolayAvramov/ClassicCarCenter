@@ -5,41 +5,43 @@ import {Card} from "../Card/Card.js";
 
 import {ContentContext} from "../../contexts/ContentContext.js";
 import {AuthContext} from "../../contexts/AuthContext.js";
+import {getAll} from "../../service/dataService.js";
 
-<<<<<<< Updated upstream
-export function MyShowroom() {
-	const {user} = useContext(AuthContext);
-=======
 export function MyShowroom({setCars}) {
-	const {myCars} = useContext(ContentContext);
->>>>>>> Stashed changes
-
+	const {user} = useContext(AuthContext);
 	const {cars} = useContext(ContentContext);
-	const [isAdding, setIsAdding] = useState(false);
-<<<<<<< Updated upstream
-	const myCars = cars.filter(car => car.owner === user.objectId);
-=======
 
+	const [isAdding, setIsAdding] = useState(false);
+	let myCars = [];
+	if (cars) {
+		myCars = cars.filter(car => car.owner === user.objectId);
+	}
 	useEffect(() => {
+		console.log("sdfasdf");
 		getAll().then(result => setCars(result));
 	}, [isAdding]);
->>>>>>> Stashed changes
 
 	return (
 		<div className={MyShowroomCss.wrapper}>
-			{myCars.map(car => {
-				return (
-					<div className={MyShowroomCss.card}>
-						<Card key={car.objectId} info={car} />
-					</div>
-				);
-			})}
 			{isAdding ? (
 				<Create setIsAdding={setIsAdding} />
 			) : (
 				<button onClick={() => setIsAdding(true)} className={MyShowroomCss.addBtn}>
 					Add Car
 				</button>
+			)}
+			{myCars ? (
+				<>
+					{myCars.map(car => {
+						return (
+							<div key={car.objectId} className={MyShowroomCss.card}>
+								<Card info={car} />
+							</div>
+						);
+					})}
+				</>
+			) : (
+				<p>You don't post any car yet!</p>
 			)}
 		</div>
 	);

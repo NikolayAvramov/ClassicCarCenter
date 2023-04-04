@@ -1,25 +1,19 @@
 import DetailsCss from "./Details.module.css";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import {useParams} from "react-router-dom";
-import {getById} from "../../service/dataService.js";
+import {del, getById} from "../../service/dataService.js";
 import Spinner from "react-bootstrap/Spinner";
-<<<<<<< Updated upstream
-
-export function Details() {
-	const {carId} = useParams();
-	const [data, setData] = useState("");
-	const [secondary, setSecondary] = useState();
-=======
 import {AuthContext} from "../../contexts/AuthContext.js";
 import {useNavigate} from "react-router-dom";
 import {Edit} from "../Edit/Edit.js";
 import {ContentContext} from "../../contexts/ContentContext.js";
+import {sendMessage} from "../../service/messageService.js";
 export function Details({setCars}) {
 	const {carId} = useParams();
 	const [data, setData] = useState("");
 	const {user} = useContext(AuthContext);
-	const navigate = useNavigate();
 	let {myCars} = useContext(ContentContext);
+	const navigate = useNavigate();
 	let isOwner = false;
 	let isAuthenticated = false;
 	if (user) {
@@ -32,35 +26,38 @@ export function Details({setCars}) {
 	const img = [];
 	const [isEditing, setIsEditing] = useState(false);
 	const [selected, setSelected] = useState({});
->>>>>>> Stashed changes
 
-	async function getSelectedItem() {
-		const result = await getById(carId);
-		setData(result);
-	}
 	useEffect(() => {
-		getSelectedItem();
-	});
-	const img = [
-		{id: "0", value: data.img1},
-		{id: "1", value: data.img2},
-		{id: "2", value: "https://hips.hearstapps.com/hmg-prod/images/my22-hypersonic-1619122058.jpg?resize=480:*"}
-	];
-	const [selected, setSelected] = useState(img[0]);
+		getById(carId).then(result => setData(result));
+	}, []);
+
+	if (data !== "") {
+		if (data.img1 !== "") {
+			img.push({id: 0, value: data.img1});
+		}
+		if (data.img2 !== "") {
+			img.push({id: 1, value: data.img2});
+		}
+		if (data.img3 !== "") {
+			img.push({id: 2, value: data.img3});
+		}
+		if (data.img4 !== "") {
+			img.push({id: 3, value: data.img4});
+		}
+		if (data.img5 !== "") {
+			img.push({id: 4, value: data.img5});
+		}
+	}
 
 	function onClickHandler(index) {
-		console.log(index);
 		const main = img[index];
 		setSelected(main);
 	}
 
-<<<<<<< Updated upstream
-=======
 	function onDeleteClick() {
 		del(carId, user.sessionToken);
 		navigate("/my-showroom");
 		myCars = myCars.filter(car => car.objectId != carId);
-
 		// delete current car
 	}
 	const [message, setMessage] = useState("");
@@ -79,47 +76,15 @@ export function Details({setCars}) {
 		setIsEditing(true);
 		navigate(`/edit/${carId}`);
 	}
->>>>>>> Stashed changes
 	return (
 		<div className={DetailsCss.container}>
-			{data ? (
+			{!isEditing ? (
 				<>
-					<section className={DetailsCss.imagePanel}>
-						<img src={selected.value} alt="" height="60%" width="100%" />
+					{data ? (
+						<>
+							<section className={DetailsCss.imagePanel}>
+								<img src={selected.value} alt="" height="60%" width="90%" />
 
-<<<<<<< Updated upstream
-						<div className={DetailsCss.secondaryImg}>
-							{img.map((data, i) => {
-								return (
-									<div>
-										<img className={selected.id == i ? DetailsCss.main : DetailsCss.secondaryImg} src={data.value} alt="" onClick={() => onClickHandler(i)} />
-									</div>
-								);
-							})}
-						</div>
-					</section>
-					<section className={DetailsCss.infoPanel}>
-						<h4>{`${data.make} ${data.model}`}</h4>
-						<p>{data.description}</p>
-						<p>
-							<strong>Price : </strong> ${data.price}
-						</p>
-						<p>
-							<strong>Type : </strong> {data.type}
-						</p>
-						<p>
-							<strong>Year : </strong> {data.year}
-						</p>
-						<p>Views: {data.views}</p>
-
-						<button className="btn btn-round btn-primary" type="button">
-							Edit
-						</button>
-						<button className="btn btn-round btn-danger" type="button">
-							Delete
-						</button>
-					</section>
-=======
 								<div className={DetailsCss.secondaryImg}>
 									{img.map((data, i) => {
 										return (
@@ -149,6 +114,7 @@ export function Details({setCars}) {
 										<button onClick={onClickSend}>send</button>
 									</div>
 								)}
+
 								{isOwner && (
 									<>
 										{" "}
@@ -165,10 +131,9 @@ export function Details({setCars}) {
 					) : (
 						<Spinner className={DetailsCss.spinner} animation="border" variant="secondary" />
 					)}
->>>>>>> Stashed changes
 				</>
 			) : (
-				<Spinner className={DetailsCss.spinner} animation="border" variant="secondary" />
+				<Edit setIsEditing={setIsEditing} />
 			)}
 		</div>
 	);

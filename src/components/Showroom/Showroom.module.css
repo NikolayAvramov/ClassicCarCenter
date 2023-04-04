@@ -1,16 +1,17 @@
 .wrapper {
 	background-image: url(../../fonts/myShowrom.jpeg);
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+	padding-bottom: 40px;
 }
 
 .card {
 	padding: 0;
-	display: inline-flex;
-	width: 22%;
+	display: inline-block;
+	width: 21%;
 	height: auto;
 	margin-left: 30px;
 	padding-left: 10px;

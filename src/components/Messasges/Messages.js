@@ -23,10 +23,10 @@ export function Messages() {
 		<section className={MsgCss.container}>
 			{myMesages.map(message => {
 				return (
-					<>
+					<div key={message.objectId} className={MsgCss.row}>
 						<p>From: {message.writer}</p>
 						<p>Message: {message.mesage}</p>
-					</>
+					</div>
 				);
 			})}
 		</section>

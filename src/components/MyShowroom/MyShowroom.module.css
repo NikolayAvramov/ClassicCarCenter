@@ -1,18 +1,27 @@
 .wrapper {
 	background-image: url(../../fonts/myShowrom.jpeg);
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	min-height: 100vh;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+	padding-bottom: 60px;
 }
 
 .card {
-	padding: 0;
 	display: inline-flex;
-	width: 22%;
-	height: auto;
-	margin-left: 30px;
+	margin-top: 100px;
+	width: 20%;
+	margin-left: 60px;
 	padding-left: 10px;
 	padding-top: 20px;
+}
+.addBtn {
+	position: absolute;
+	margin-left: 10%;
+	top: 100px;
+	width: 80%;
+	background-image: linear-gradient(orange, green);
+	border: 2px solid;
+	border-radius: 10px;
 }
