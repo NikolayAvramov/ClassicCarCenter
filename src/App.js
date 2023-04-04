@@ -20,8 +20,9 @@ import {Create} from "./components/Create/Create.js";
 import {RouteGuards} from "./components/coman/RouteGuards.js";
 import {Edit} from "./components/Edit/Edit.js";
 import {Messages} from "./components/Messasges/Messages.js";
+import {useLocalStorage} from "./hooks/useLocalStorage.js";
 function App() {
-	const [user, setUser] = useState();
+	const [user, setUser] = useLocalStorage("auth", {});
 	const [cars, setCars] = useState([]);
 	const authContextValues = {
 		user
