@@ -17,7 +17,7 @@ export async function create(data, sessionToken) {
 
 	return response;
 }
-export async function getAll() {
+export async function getCars() {
 	const response = await fetch(host + "classes/cars", {
 		method: "GET",
 		headers: {
@@ -73,5 +73,4 @@ export async function edit(id, sessionToken, data) {
 		body: JSON.stringify(data)
 	});
 	const result = await response.json();
-	console.log(result);
 }

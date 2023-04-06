@@ -7,7 +7,7 @@ import CloseButton from "react-bootstrap/CloseButton";
 import Button from "react-bootstrap/Button";
 import {create, getAll} from "../../service/dataService.js";
 
-export function Create({setIsAdding, setCars}) {
+export function Create({setIsAddShow}) {
 	const {user} = useContext(AuthContext);
 
 	const navigate = useNavigate();
@@ -18,7 +18,6 @@ export function Create({setIsAdding, setCars}) {
 
 	const [formValues, setFormValues] = useState({
 		owner: user.objectId,
-		views: 0,
 		make: "",
 		model: "",
 		type: "",
@@ -41,7 +40,7 @@ export function Create({setIsAdding, setCars}) {
 
 		if (response.ok) {
 			navigate("/my-showroom");
-			setIsAdding(false);
+			setIsAddShow(false);
 		}
 	}
 
@@ -50,7 +49,7 @@ export function Create({setIsAdding, setCars}) {
 	}
 
 	function onClickChange() {
-		setIsAdding(false);
+		setIsAddShow(false);
 	}
 
 	return (

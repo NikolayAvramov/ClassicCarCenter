@@ -12,7 +12,7 @@
 	display: inline-flex;
 	margin-top: 100px;
 	width: 20%;
-	margin-left: 60px;
+	margin-left: 70px;
 	padding-left: 10px;
 	padding-top: 20px;
 }
@@ -24,4 +24,8 @@
 	background-image: linear-gradient(orange, green);
 	border: 2px solid;
 	border-radius: 10px;
+}
+.itemsWrapper {
+	padding-top: 40px;
+	width: 100%;
 }

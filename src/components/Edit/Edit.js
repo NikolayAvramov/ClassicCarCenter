@@ -5,9 +5,9 @@ import EditCSS from "./Edit.module.css";
 import {useContext} from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 import Button from "react-bootstrap/Button";
-import {getById} from "../../service/dataService.js";
+import {edit, getById} from "../../service/dataService.js";
 
-export function Edit({setIsEditing}) {
+export function Edit(data) {
 	const {user} = useContext(AuthContext);
 	const {id} = useParams();
 	const navigate = useNavigate();
@@ -18,7 +18,6 @@ export function Edit({setIsEditing}) {
 
 	const [formValues, setFormValues] = useState({
 		owner: user.objectId,
-		views: 0,
 		make: "",
 		model: "",
 		type: "",
@@ -32,17 +31,37 @@ export function Edit({setIsEditing}) {
 		img4: "",
 		img5: ""
 	});
-
+	console.log(data);
 	useEffect(() => {
-		getById(id);
-	});
+		getById(id).then(result => setFormValues(result));
+	}, []);
 
 	function onDataChange(e) {
 		setFormValues(state => ({...state, [e.target.name]: e.target.value}));
 	}
 
-	function onClickChange() {
-		setIsEditing(false);
+	function onClickClose() {
+		data(false);
+	}
+
+	const token = user.sessionToken;
+	async function onSubmitEdit() {
+		const result = await edit(id, token, {
+			owner: user.objectId,
+			make: formValues.make,
+			model: formValues.model,
+			type: formValues.type,
+			price: formValues.price,
+			description: formValues.description,
+			location: formValues.location,
+			year: formValues.year,
+			img1: formValues.img1,
+			img2: formValues.img2,
+			img3: formValues.img3,
+			img4: formValues.img4,
+			img5: formValues.img5
+		});
+		navigate("/my-showroom");
 	}
 
 	return (
@@ -52,9 +71,9 @@ export function Edit({setIsEditing}) {
 				<div className={EditCSS.userContainer}>
 					<header className={EditCSS.headers}>
 						<h2>Edit car</h2>
-						<CloseButton onClick={onClickChange} />
+						<CloseButton onClick={onClickClose} />
 					</header>
-					<form>
+					<form onSubmit={onSubmitEdit}>
 						<div className={EditCSS.formRow}>
 							<div className={EditCSS.formGroup}>
 								<label htmlFor="make">Make</label>
@@ -179,10 +198,10 @@ export function Edit({setIsEditing}) {
 							</div>
 						</div>
 						<div className={EditCSS.formAction}>
-							<Button type="button" size="sm" variant="outline-primary">
-								ADD
+							<Button onClick={onSubmitEdit} type="button" size="sm" variant="outline-primary">
+								Save
 							</Button>{" "}
-							<Button variant="outline-danger" size="sm" onClick={onClickChange}>
+							<Button variant="outline-danger" size="sm" onClick={onClickClose}>
 								Cancel
 							</Button>{" "}
 						</div>

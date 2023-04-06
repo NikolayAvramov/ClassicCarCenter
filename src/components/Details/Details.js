@@ -6,16 +6,28 @@ import Spinner from "react-bootstrap/Spinner";
 import {AuthContext} from "../../contexts/AuthContext.js";
 import {useNavigate} from "react-router-dom";
 import {Edit} from "../Edit/Edit.js";
-import {ContentContext} from "../../contexts/ContentContext.js";
+
 import {sendMessage} from "../../service/messageService.js";
+
 export function Details({setCars}) {
 	const {carId} = useParams();
 	const [data, setData] = useState("");
 	const {user} = useContext(AuthContext);
-	let {myCars} = useContext(ContentContext);
+
 	const navigate = useNavigate();
+
+	const token = user.sessionToken;
+	const [message, setMessage] = useState("");
+	const mesageData = {
+		carOwner: data.owner,
+		mesage: message,
+		writer: user.username
+	};
 	let isOwner = false;
 	let isAuthenticated = false;
+	const img = [];
+	const [isEditing, setIsEditing] = useState(false);
+	const [selected, setSelected] = useState({});
 	if (user) {
 		if (user.objectId === data.owner) {
 			isOwner = true;
@@ -23,29 +35,29 @@ export function Details({setCars}) {
 			isAuthenticated = true;
 		}
 	}
-	const img = [];
-	const [isEditing, setIsEditing] = useState(false);
-	const [selected, setSelected] = useState({});
 
 	useEffect(() => {
-		getById(carId).then(result => setData(result));
+		getById(carId).then(result => {
+			setData(result);
+			setSelected({value: result.img1});
+		});
 	}, []);
 
 	if (data !== "") {
 		if (data.img1 !== "") {
-			img.push({id: 0, value: data.img1});
+			img.push({value: data.img1});
 		}
 		if (data.img2 !== "") {
-			img.push({id: 1, value: data.img2});
+			img.push({value: data.img2});
 		}
 		if (data.img3 !== "") {
-			img.push({id: 2, value: data.img3});
+			img.push({value: data.img3});
 		}
 		if (data.img4 !== "") {
-			img.push({id: 3, value: data.img4});
+			img.push({value: data.img4});
 		}
 		if (data.img5 !== "") {
-			img.push({id: 4, value: data.img5});
+			img.push({value: data.img5});
 		}
 	}
 
@@ -57,28 +69,21 @@ export function Details({setCars}) {
 	function onDeleteClick() {
 		del(carId, user.sessionToken);
 		navigate("/my-showroom");
-		myCars = myCars.filter(car => car.objectId != carId);
-		// delete current car
 	}
-	const [message, setMessage] = useState("");
-	const mesageData = {
-		carOwner: data.owner,
-		mesage: message,
-		writer: user.username
-	};
-	const token = user.sessionToken;
 	async function onClickSend() {
 		const result = await sendMessage(mesageData, token);
-		console.log(result);
 	}
 
 	function onEditClick() {
 		setIsEditing(true);
 		navigate(`/edit/${carId}`);
 	}
+
 	return (
 		<div className={DetailsCss.container}>
-			{!isEditing ? (
+			{isEditing ? (
+				<Edit data={setIsEditing} />
+			) : (
 				<>
 					{data ? (
 						<>
@@ -89,7 +94,7 @@ export function Details({setCars}) {
 									{img.map((data, i) => {
 										return (
 											<div key={i}>
-												<img className={selected.id === i ? DetailsCss.main : DetailsCss.secondaryImg} src={data.value} alt="" onClick={() => onClickHandler(i)} />
+												<img src={data.value} alt="" onClick={() => onClickHandler(i)} />
 											</div>
 										);
 									})}
@@ -107,7 +112,7 @@ export function Details({setCars}) {
 								<p>
 									<strong>Year : </strong> {data.year}
 								</p>
-								<p>Views: {data.views}</p>
+
 								{isAuthenticated && (
 									<div>
 										<textarea name="" id="" cols="25" rows="2" value={message} onChange={e => setMessage(e.target.value)}></textarea>
@@ -132,8 +137,6 @@ export function Details({setCars}) {
 						<Spinner className={DetailsCss.spinner} animation="border" variant="secondary" />
 					)}
 				</>
-			) : (
-				<Edit setIsEditing={setIsEditing} />
 			)}
 		</div>
 	);

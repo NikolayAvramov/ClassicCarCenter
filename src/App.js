@@ -21,47 +21,40 @@ import {RouteGuards} from "./components/coman/RouteGuards.js";
 import {Edit} from "./components/Edit/Edit.js";
 import {Messages} from "./components/Messasges/Messages.js";
 import {useLocalStorage} from "./hooks/useLocalStorage.js";
+import {ContentProvider} from "./contexts/ContentContext.js";
+
 function App() {
 	const [user, setUser] = useLocalStorage("auth", {});
-	const [cars, setCars] = useState([]);
+
 	const authContextValues = {
 		user
 	};
-	let myCars = [];
-	if (cars && user) {
-		myCars = cars.filter(car => car.owner === user.objectId);
-	}
-	const contentValues = {
-		cars,
-		myCars
-	};
-	async function takeAll() {
-		const result = await getAll();
-		setCars(result.results);
-		console.log(result.results);
-	}
-	useEffect(() => {
-		getAll().then(result => setCars(result.results));
-	}, []);
 
 	return (
 		<AuthContext.Provider value={authContextValues}>
-			<ContentContext.Provider value={contentValues}>
+			<ContentProvider>
 				<Navigation setUser={setUser} />
 				<Routes>
 					<Route path="/login" element={<Login setUser={setUser} />} />
 					<Route path="/register" element={<Register setUser={setUser} />} />
-					<Route path="/showroom" element={<Showroom setCars={setCars} />} />
+					<Route path="/showroom" element={<Showroom />} />
 					<Route element={<RouteGuards />}>
-						<Route path="/create" element={<Create setCars={setCars} />} />
-						<Route path="/my-showroom" element={<MyShowroom setCars={setCars} />} />
+						<Route path="/create" element={<Create />} />
+						<Route path="/my-showroom" element={<MyShowroom />} />
 						<Route path="/edit/:id" element={<Edit />} />
 						<Route path="user/message" element={<Messages />} />
 					</Route>
-					<Route path="/details/:carId" element={<Details setCars={setCars} />} />
+					<Route
+						path="/details/:carId"
+						element={
+							<Details
+							// setCars={setCars}
+							/>
+						}
+					/>
 					<Route path="/" element={<Home />} />
 				</Routes>
-			</ContentContext.Provider>
+			</ContentProvider>
 			<Footer />
 		</AuthContext.Provider>
 	);

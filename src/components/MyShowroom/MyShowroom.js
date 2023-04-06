@@ -5,33 +5,30 @@ import {Card} from "../Card/Card.js";
 
 import {ContentContext} from "../../contexts/ContentContext.js";
 import {AuthContext} from "../../contexts/AuthContext.js";
-import {getAll} from "../../service/dataService.js";
 
 export function MyShowroom({setCars}) {
 	const {user} = useContext(AuthContext);
-	const {cars} = useContext(ContentContext);
-
-	const [isAdding, setIsAdding] = useState(false);
+	const {cars, getAllCars} = useContext(ContentContext);
 	let myCars = [];
-	if (cars) {
+	const [isAddShow, setIsAddShow] = useState(false);
+	useEffect(() => {
+		getAllCars();
+	}, [isAddShow]);
+	if (cars && user) {
 		myCars = cars.filter(car => car.owner === user.objectId);
 	}
-	useEffect(() => {
-		console.log("sdfasdf");
-		getAll().then(result => setCars(result));
-	}, [isAdding]);
 
 	return (
 		<div className={MyShowroomCss.wrapper}>
-			{isAdding ? (
-				<Create setIsAdding={setIsAdding} />
+			{isAddShow ? (
+				<Create setIsAddShow={setIsAddShow} />
 			) : (
-				<button onClick={() => setIsAdding(true)} className={MyShowroomCss.addBtn}>
+				<button onClick={() => setIsAddShow(true)} className={MyShowroomCss.addBtn}>
 					Add Car
 				</button>
 			)}
 			{myCars ? (
-				<>
+				<div className={MyShowroomCss.itemsWrapper}>
 					{myCars.map(car => {
 						return (
 							<div key={car.objectId} className={MyShowroomCss.card}>
@@ -39,7 +36,7 @@ export function MyShowroom({setCars}) {
 							</div>
 						);
 					})}
-				</>
+				</div>
 			) : (
 				<p>You don't post any car yet!</p>
 			)}

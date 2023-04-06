@@ -17,18 +17,27 @@ export function Messages() {
 		}
 	}
 
-	console.log(myMesages);
-
 	return (
 		<section className={MsgCss.container}>
-			{myMesages.map(message => {
-				return (
-					<div key={message.objectId} className={MsgCss.row}>
-						<p>From: {message.writer}</p>
-						<p>Message: {message.mesage}</p>
-					</div>
-				);
-			})}
+			<ul className={MsgCss.list}>
+				{myMesages.map(message => {
+					return (
+						<li key={message.objectId} className={MsgCss.row}>
+							<div className={MsgCss.p}>
+								<p className={MsgCss.from}>
+									<strong>From:</strong> {message.writer}
+								</p>
+							</div>
+							<div className={MsgCss.p}>
+								<p className={MsgCss.text}>
+									{" "}
+									<strong> Message:</strong> {message.mesage}
+								</p>
+							</div>
+						</li>
+					);
+				})}
+			</ul>
 		</section>
 	);
 }
