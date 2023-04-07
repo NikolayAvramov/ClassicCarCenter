@@ -41,3 +41,9 @@ button {
 	font-size: 22px;
 	height: 300px;
 }
+.buttons {
+	padding-top: 0;
+	width: auto;
+	height: 60px;
+	font-size: 40px;
+}

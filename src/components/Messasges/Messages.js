@@ -1,11 +1,12 @@
 import {useContext, useEffect, useState} from "react";
-import {getMessages} from "../../service/messageService.js";
+import {delMessage, getMessages} from "../../service/messageService.js";
 import {AuthContext} from "../../contexts/AuthContext.js";
 import MsgCss from "./Message.module.css";
+import {RiDeleteBin5Line} from "react-icons/ri";
 export function Messages() {
 	const {user} = useContext(AuthContext);
 	const [messageArr, setMessageArr] = useState(null);
-	const myMesages = [];
+	let myMesages = [];
 	useEffect(() => {
 		getMessages(user.sessionToken).then(result => setMessageArr(result));
 	}, []);
@@ -15,6 +16,11 @@ export function Messages() {
 				myMesages.push(mesage);
 			}
 		}
+	}
+
+	function onDelMessageClick(messageId) {
+		delMessage(messageId, user.sessionToken);
+		setMessageArr(myMesages.filter(message => message.objectId !== messageId));
 	}
 
 	return (
@@ -33,6 +39,9 @@ export function Messages() {
 									{" "}
 									<strong> Message:</strong> {message.mesage}
 								</p>
+							</div>
+							<div className={MsgCss.delBtn}>
+								<RiDeleteBin5Line onClick={() => onDelMessageClick(message.objectId)} />
 							</div>
 						</li>
 					);

@@ -47,7 +47,7 @@ export async function getById(id) {
 	const result = await response.json();
 	return result;
 }
-export async function addView() {}
+
 export async function del(id, sessionToken) {
 	const response = await fetch(host + "classes/cars/" + id, {
 		method: "DELETE",

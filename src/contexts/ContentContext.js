@@ -6,14 +6,19 @@ export const ContentContext = createContext();
 export function ContentProvider({children}) {
 	const [cars, setCars] = useState([]);
 	const {user} = useContext(AuthContext);
-
+	const [isEditing, setIsEditing] = useState(false);
 	function getAllCars() {
 		getCars().then(result => setCars(result));
 	}
 
+	function changeIsEditingValue(state) {
+		setIsEditing(state);
+	}
 	const contentValues = {
 		cars,
-		getAllCars
+		isEditing,
+		getAllCars,
+		changeIsEditingValue
 	};
 
 	return (

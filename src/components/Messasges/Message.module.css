@@ -36,3 +36,11 @@
 	height: 20px;
 	font-size: 23px;
 }
+.delBtn {
+	margin-left: 10px;
+	margin-top: 10px;
+	display: inline-block;
+}
+.delBtn:hover {
+	cursor: pointer;
+}

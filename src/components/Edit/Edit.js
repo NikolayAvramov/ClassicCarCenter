@@ -6,8 +6,10 @@ import {useContext} from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 import Button from "react-bootstrap/Button";
 import {edit, getById} from "../../service/dataService.js";
+import {ContentContext} from "../../contexts/ContentContext.js";
 
 export function Edit(data) {
+	const {changeIsEditingValue, isEditing} = useContext(ContentContext);
 	const {user} = useContext(AuthContext);
 	const {id} = useParams();
 	const navigate = useNavigate();
@@ -31,17 +33,13 @@ export function Edit(data) {
 		img4: "",
 		img5: ""
 	});
-	console.log(data);
+	console.log(isEditing);
 	useEffect(() => {
 		getById(id).then(result => setFormValues(result));
 	}, []);
 
 	function onDataChange(e) {
 		setFormValues(state => ({...state, [e.target.name]: e.target.value}));
-	}
-
-	function onClickClose() {
-		data(false);
 	}
 
 	const token = user.sessionToken;
@@ -64,6 +62,11 @@ export function Edit(data) {
 		navigate("/my-showroom");
 	}
 
+	function closeEditView() {
+		changeIsEditingValue(false);
+		navigate(`/details/${id}`);
+	}
+
 	return (
 		<div className={EditCSS.overlay}>
 			<div className={EditCSS.backdrop}></div>
@@ -71,7 +74,7 @@ export function Edit(data) {
 				<div className={EditCSS.userContainer}>
 					<header className={EditCSS.headers}>
 						<h2>Edit car</h2>
-						<CloseButton onClick={onClickClose} />
+						<CloseButton onClick={closeEditView} />
 					</header>
 					<form onSubmit={onSubmitEdit}>
 						<div className={EditCSS.formRow}>
@@ -201,7 +204,7 @@ export function Edit(data) {
 							<Button onClick={onSubmitEdit} type="button" size="sm" variant="outline-primary">
 								Save
 							</Button>{" "}
-							<Button variant="outline-danger" size="sm" onClick={onClickClose}>
+							<Button variant="outline-danger" size="sm" onClick={closeEditView}>
 								Cancel
 							</Button>{" "}
 						</div>

@@ -6,18 +6,23 @@ import Spinner from "react-bootstrap/Spinner";
 import {AuthContext} from "../../contexts/AuthContext.js";
 import {useNavigate} from "react-router-dom";
 import {Edit} from "../Edit/Edit.js";
+import Button from "react-bootstrap/Button";
 
 import {sendMessage} from "../../service/messageService.js";
+import {ContentContext} from "../../contexts/ContentContext.js";
 
 export function Details({setCars}) {
 	const {carId} = useParams();
 	const [data, setData] = useState("");
-	const {user} = useContext(AuthContext);
+	const [message, setMessage] = useState("");
+	const [selected, setSelected] = useState({});
+	const [showMessageArea, setShowMessageArrea] = useState(false);
 
+	const {user} = useContext(AuthContext);
+	const {changeIsEditingValue, isEditing} = useContext(ContentContext);
 	const navigate = useNavigate();
 
 	const token = user.sessionToken;
-	const [message, setMessage] = useState("");
 	const mesageData = {
 		carOwner: data.owner,
 		mesage: message,
@@ -26,8 +31,7 @@ export function Details({setCars}) {
 	let isOwner = false;
 	let isAuthenticated = false;
 	const img = [];
-	const [isEditing, setIsEditing] = useState(false);
-	const [selected, setSelected] = useState({});
+
 	if (user) {
 		if (user.objectId === data.owner) {
 			isOwner = true;
@@ -72,17 +76,19 @@ export function Details({setCars}) {
 	}
 	async function onClickSend() {
 		const result = await sendMessage(mesageData, token);
+		setMessage("");
+		setShowMessageArrea(false);
 	}
 
 	function onEditClick() {
-		setIsEditing(true);
+		changeIsEditingValue(true);
 		navigate(`/edit/${carId}`);
 	}
 
 	return (
 		<div className={DetailsCss.container}>
 			{isEditing ? (
-				<Edit data={setIsEditing} />
+				<Edit />
 			) : (
 				<>
 					{data ? (
@@ -115,20 +121,35 @@ export function Details({setCars}) {
 
 								{isAuthenticated && (
 									<div>
-										<textarea name="" id="" cols="25" rows="2" value={message} onChange={e => setMessage(e.target.value)}></textarea>
-										<button onClick={onClickSend}>send</button>
+										{showMessageArea ? (
+											<div>
+												<textarea name="" id="" cols="25" rows="2" value={message} onChange={e => setMessage(e.target.value)}></textarea>
+												<button onClick={onClickSend}>Send</button>
+												<button
+													onClick={() => {
+														setShowMessageArrea(false);
+														setMessage("");
+													}}
+												>
+													Cancel
+												</button>
+											</div>
+										) : (
+											<button onClick={() => setShowMessageArrea(true)}>Contact Seller</button>
+										)}
 									</div>
 								)}
 
 								{isOwner && (
 									<>
 										{" "}
-										<button onClick={onEditClick} className="btn btn-round btn-primary" type="button">
+										<Button className={DetailsCss.buttons} onClick={onEditClick} type="button" size="sm" variant="outline-primary">
 											Edit
-										</button>
-										<button onClick={onDeleteClick} className="btn btn-round btn-danger" type="button">
+										</Button>
+										<Button className={DetailsCss.buttons} variant="outline-danger" onClick={onDeleteClick}>
+											{" "}
 											Delete
-										</button>
+										</Button>
 									</>
 								)}
 							</section>

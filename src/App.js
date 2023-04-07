@@ -14,7 +14,7 @@ import {Details} from "./components/Details/Details.js";
 import {Footer} from "./components/Footer/Footer.js";
 import {Home} from "./components/Home/Home.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {getAll} from "./service/dataService.js";
+
 import {Showroom} from "./components/Showroom/Showroom.js";
 import {Create} from "./components/Create/Create.js";
 import {RouteGuards} from "./components/coman/RouteGuards.js";
