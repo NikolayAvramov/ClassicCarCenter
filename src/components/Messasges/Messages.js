@@ -25,28 +25,34 @@ export function Messages() {
 
 	return (
 		<section className={MsgCss.container}>
-			<ul className={MsgCss.list}>
-				{myMesages.map(message => {
-					return (
-						<li key={message.objectId} className={MsgCss.row}>
-							<div className={MsgCss.p}>
-								<p className={MsgCss.from}>
-									<strong>From:</strong> {message.writer}
-								</p>
-							</div>
-							<div className={MsgCss.p}>
-								<p className={MsgCss.text}>
-									{" "}
-									<strong> Message:</strong> {message.mesage}
-								</p>
-							</div>
-							<div className={MsgCss.delBtn}>
-								<RiDeleteBin5Line onClick={() => onDelMessageClick(message.objectId)} />
-							</div>
-						</li>
-					);
-				})}
-			</ul>
+			{myMesages.length !== 0 ? (
+				<ul className={MsgCss.list}>
+					{myMesages.map(message => {
+						return (
+							<li key={message.objectId} className={MsgCss.row}>
+								<div className={MsgCss.p}>
+									<p className={MsgCss.from}>
+										<strong>From:</strong> {message.writer}
+									</p>
+								</div>
+								<div className={MsgCss.p}>
+									<p className={MsgCss.text}>
+										{" "}
+										<strong> Message:</strong> {message.mesage}
+									</p>
+								</div>
+								<div className={MsgCss.delBtn}>
+									<RiDeleteBin5Line onClick={() => onDelMessageClick(message.objectId)} />
+								</div>
+							</li>
+						);
+					})}
+				</ul>
+			) : (
+				<div className={MsgCss.list}>
+					<p className={MsgCss.noMessage}>You have no messages yet!</p>
+				</div>
+			)}
 		</section>
 	);
 }
