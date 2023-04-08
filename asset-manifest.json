@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ClassicCarCenter/static/css/main.3e193dc7.css",
+    "main.js": "/ClassicCarCenter/static/js/main.dc6c9613.js",
+    "static/media/Classic-Car-Collecting-03.png": "/ClassicCarCenter/static/media/Classic-Car-Collecting-03.99432764e79b60286d48.png",
+    "static/media/myShowrom.jpeg": "/ClassicCarCenter/static/media/myShowrom.a1aa5a0324e01d21ad74.jpeg",
+    "static/media/Untitled-1.png": "/ClassicCarCenter/static/media/Untitled-1.58184329c5607afbc8ab.png",
+    "static/media/3.webp": "/ClassicCarCenter/static/media/3.bf4e5e3d45ca891f8544.webp",
+    "static/media/4.webp": "/ClassicCarCenter/static/media/4.f990aa485f98de0c76d8.webp",
+    "static/media/5.webp": "/ClassicCarCenter/static/media/5.ad85cbf8243332c465dc.webp",
+    "static/media/1.webp": "/ClassicCarCenter/static/media/1.c930c48107761be392ee.webp",
+    "static/media/2.webp": "/ClassicCarCenter/static/media/2.97fd850ee9a52c224f48.webp",
+    "static/media/login-font.jpg": "/ClassicCarCenter/static/media/login-font.0d96a11b2b70eb332af2.jpg",
+    "index.html": "/ClassicCarCenter/index.html",
+    "main.3e193dc7.css.map": "/ClassicCarCenter/static/css/main.3e193dc7.css.map",
+    "main.dc6c9613.js.map": "/ClassicCarCenter/static/js/main.dc6c9613.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e193dc7.css",
+    "static/js/main.dc6c9613.js"
+  ]
+}
