@@ -1,0 +1,23 @@
+.wrapper {
+	background-image: url(../../fonts/myShowrom.jpeg);
+	width: 100vw;
+	min-height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	padding-bottom: 40px;
+}
+
+.card {
+	padding: 0;
+	display: inline-block;
+	width: 21%;
+	height: auto;
+	margin-left: 50px;
+	padding-left: 10px;
+	padding-top: 20px;
+}
+.itemsWrapper {
+	padding-top: 40px;
+	width: 100%;
+}

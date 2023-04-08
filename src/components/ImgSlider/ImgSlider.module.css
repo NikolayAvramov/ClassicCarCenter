@@ -1,0 +1,12 @@
+.container {
+	width: 600px;
+	height: 300px;
+	margin: auto;
+	position: relative;
+}
+
+.img {
+	width: 800px;
+	height: 300px;
+	border: 2px solid green;
+}

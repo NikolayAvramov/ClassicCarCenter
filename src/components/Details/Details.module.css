@@ -1,0 +1,66 @@
+/*panel*/
+.container {
+	background-color: #c1c1c1;
+	width: 100vw;
+	height: 81vh;
+}
+.container section {
+	display: inline-block;
+	margin-left: 20px;
+}
+.imagePanel {
+	margin-top: 30px;
+	height: 87vh;
+	width: 47vw;
+	text-align: center;
+}
+
+.secondaryImg div {
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 15px;
+}
+.secondaryImg div img {
+	width: 160px;
+	height: 120px;
+	border-radius: 10px;
+}
+
+.infoPanel {
+	position: absolute;
+	float: right;
+	height: 80vh;
+	width: 47vw;
+	text-align: center;
+}
+button {
+	margin-left: 30px;
+}
+
+.description {
+	font-size: 22px;
+	height: 300px;
+}
+.buttons {
+	padding-top: 0;
+	width: auto;
+	height: 60px;
+	font-size: 40px;
+}
+.spinner {
+	margin: 20% 50%;
+}
+.contactBtn {
+	color: rgb(176, 130, 71);
+	background-color: rgb(255, 232, 203);
+	border-radius: 10px;
+}
+.cancelBtn {
+	border-radius: 10px;
+	color: rgb(108, 79, 41);
+	background-color: rgb(238, 147, 147);
+}
+.textArea {
+	border: 1px solid black;
+	border-radius: 10px;
+}
