@@ -8,7 +8,7 @@ export function Login({setUser}) {
 		email: "",
 		password: ""
 	});
-	const [error, setError] = useState(false);
+	const [error, setError] = useState("");
 	function onDataChange(e) {
 		setFormValues(state => ({...state, [e.target.name]: e.target.value}));
 	}
@@ -16,9 +16,9 @@ export function Login({setUser}) {
 		e.preventDefault();
 		const result = await login(formValues);
 		const data = await result.json();
-
+		console.log(data, result);
 		if (!result.ok) {
-			setError(true);
+			setError(data.error);
 		} else {
 			setError(false);
 
@@ -41,7 +41,7 @@ export function Login({setUser}) {
 						<input type="text" required="required" name="password" value={formValues.password} onChange={onDataChange} />
 						<span>Password</span>
 					</div>
-					{error && <p className={LoginCSS.error}>Email address or password is wrong!</p>}
+					{error && <p className={LoginCSS.error}>{error}</p>}
 
 					<button onClick={onSubmitHandler} className={LoginCSS.loginBtn} type="submit">
 						Login

@@ -1,6 +1,6 @@
 /*panel*/
 .container {
-	background-color: #afd81c;
+	background-color: #c1c1c1;
 	width: 100vw;
 	height: 81vh;
 }
@@ -46,4 +46,7 @@ button {
 	width: auto;
 	height: 60px;
 	font-size: 40px;
+}
+.spinner {
+	margin: 20% 50%;
 }
