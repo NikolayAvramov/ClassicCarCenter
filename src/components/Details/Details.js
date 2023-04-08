@@ -122,10 +122,13 @@ export function Details({setCars}) {
 								{isAuthenticated && (
 									<div>
 										{showMessageArea ? (
-											<div>
-												<textarea name="" id="" cols="25" rows="2" value={message} onChange={e => setMessage(e.target.value)}></textarea>
-												<button onClick={onClickSend}>Send</button>
+											<div className={DetailsCss.contactArea}>
+												<textarea className={DetailsCss.textArea} name="" id="" cols="25" rows="2" value={message} onChange={e => setMessage(e.target.value)}></textarea>
+												<button className={DetailsCss.contactBtn} onClick={onClickSend}>
+													Send
+												</button>
 												<button
+													className={DetailsCss.cancelBtn}
 													onClick={() => {
 														setShowMessageArrea(false);
 														setMessage("");
@@ -135,7 +138,9 @@ export function Details({setCars}) {
 												</button>
 											</div>
 										) : (
-											<button onClick={() => setShowMessageArrea(true)}>Contact Seller</button>
+											<button className={DetailsCss.contactBtn} onClick={() => setShowMessageArrea(true)}>
+												Contact Seller
+											</button>
 										)}
 									</div>
 								)}

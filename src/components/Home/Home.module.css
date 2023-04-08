@@ -1,6 +1,31 @@
 .dynamic {
 	background-color: rgb(185, 184, 184);
 	width: 100vw;
-	height: 80vh;
+	height: auto;
 	padding-top: 30px;
+	padding-bottom: 40px;
+	background-image: url(../../fonts/Classic-Car-Collecting-03.png);
+	background-blend-mode: difference;
+	background-attachment: fixed;
+}
+
+.text {
+	color: rgb(255, 255, 255);
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	width: 800px;
+	text-align: center;
+	margin-left: 30%;
+	margin-top: 6%;
+	font-size: 30px;
+	filter: none;
+	transform-origin: 1%;
+	background: rgba(122, 122, 122, 0.6);
+}
+.title {
+	font-family: "Times New Roman", Times, serif;
+	color: rgb(233, 237, 240);
+
+	margin-left: 23%;
+	margin-top: 1%;
+	font-size: 140px;
 }

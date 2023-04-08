@@ -13,7 +13,7 @@ export function Card({info}) {
 			<h3>{info.make + " " + info.model}</h3>
 			<p>Price :{info.price} $</p>
 			<p>Year :{info.year}</p>
-			<p>Description : {info.description.slice(0, 100)}... </p>
+			<p>Description : {info.description.slice(0, 80)}... </p>
 		</div>
 	);
 }

@@ -50,3 +50,17 @@ button {
 .spinner {
 	margin: 20% 50%;
 }
+.contactBtn {
+	color: rgb(176, 130, 71);
+	background-color: rgb(255, 232, 203);
+	border-radius: 10px;
+}
+.cancelBtn {
+	border-radius: 10px;
+	color: rgb(108, 79, 41);
+	background-color: rgb(238, 147, 147);
+}
+.textArea {
+	border: 1px solid black;
+	border-radius: 10px;
+}
