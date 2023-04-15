@@ -8,12 +8,15 @@ import {AuthContext} from "../../contexts/AuthContext.js";
 
 export function MyShowroom({setCars}) {
 	const {user} = useContext(AuthContext);
-	const {cars, getAllCars} = useContext(ContentContext);
+	const {cars, getAllCars, updateMyCars} = useContext(ContentContext);
 	let myCars = [];
+
 	const [isAddShow, setIsAddShow] = useState(false);
 	useEffect(() => {
+		console.log("sdf");
 		getAllCars();
 	}, [isAddShow]);
+
 	if (cars && user) {
 		myCars = cars.filter(car => car.owner === user.objectId);
 	}

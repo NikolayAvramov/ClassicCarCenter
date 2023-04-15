@@ -70,8 +70,9 @@ export function Details({setCars}) {
 		setSelected(main);
 	}
 
-	function onDeleteClick() {
-		del(carId, user.sessionToken);
+	async function onDeleteClick() {
+		await del(carId, user.sessionToken);
+
 		navigate("/my-showroom");
 	}
 	async function onClickSend() {

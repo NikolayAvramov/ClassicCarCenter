@@ -1,10 +1,7 @@
 import {AuthContext} from "./contexts/AuthContext.js";
-import {ContentContext} from "./contexts/ContentContext.js";
 
 import {Routes} from "react-router-dom";
 import {Route} from "react-router-dom";
-
-import {useState, useEffect} from "react";
 
 import {Login} from "./components/Login/Login.js";
 import {Navigation} from "./components/Navigation/Navigation.js";
@@ -44,14 +41,7 @@ function App() {
 						<Route path="/edit/:id" element={<Edit />} />
 						<Route path="user/message" element={<Messages />} />
 					</Route>
-					<Route
-						path="/details/:carId"
-						element={
-							<Details
-							// setCars={setCars}
-							/>
-						}
-					/>
+					<Route path="/details/:carId" element={<Details />} />
 					<Route path="/" element={<Home />} />
 				</Routes>
 			</ContentProvider>

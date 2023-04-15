@@ -14,6 +14,7 @@ export function ContentProvider({children}) {
 	function changeIsEditingValue(state) {
 		setIsEditing(state);
 	}
+
 	const contentValues = {
 		cars,
 		isEditing,

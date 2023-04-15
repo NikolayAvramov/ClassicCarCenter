@@ -33,7 +33,7 @@ export function Edit(data) {
 		img4: "",
 		img5: ""
 	});
-	console.log(isEditing);
+
 	useEffect(() => {
 		getById(id).then(result => setFormValues(result));
 	}, []);
@@ -60,6 +60,7 @@ export function Edit(data) {
 			img5: formValues.img5
 		});
 		navigate("/my-showroom");
+		changeIsEditingValue(false);
 	}
 
 	function closeEditView() {
