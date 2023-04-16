@@ -3,7 +3,7 @@
 }
 
 .row {
-	width: 500px;
+	width: 100%;
 	display: inline-flex;
 	color: red;
 }
@@ -26,9 +26,9 @@
 }
 
 .modal {
-	width: 45rem;
+	height: 90%;
+	width: 60%;
 	position: absolute;
-	max-height: 90vh;
 	margin: auto;
 	border-radius: 20px;
 	background-color: white;
@@ -54,21 +54,22 @@
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
-
 	border-bottom: 1px solid #ccc;
 }
 
 .formRow {
 	width: 100%;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
 	margin-top: 10px;
 }
 .formGroup {
 	margin-right: 1px;
 	width: 33%;
-	vertical-align: middle;
+}
+
+.formGroup label {
+	font-size: 1.5rem;
 }
 
 .formError {
@@ -76,36 +77,147 @@
 	font-size: 16px;
 }
 .inputWrapper {
-	display: flex;
-
 	width: 80%;
 }
 
-.inputWrapper span {
-	display: flex;
-	align-items: center;
-	padding: 6px 12px;
-	font-weight: 400;
-	line-height: 1;
-	color: #555;
-	text-align: center;
-	background-color: #f7f7f7;
-	border: 1px solid #d5dee6;
-	border-top-left-radius: 4px;
-	border-bottom-left-radius: 4px;
+.inputWrapper textarea {
+	width: 100%;
 }
-
 .inputWrapper input {
 	width: 100%;
 	font-weight: 200;
-
 	border: 1px solid #d5dee6;
-	outline: none;
-	height: 50px;
+	height: 2rem;
 	padding: 6px 12px;
 	background-color: #f7f7f7;
 }
 .formAction {
 	margin-top: 10px;
 	float: right;
+}
+@media (max-width: 82em) {
+	.headers {
+		height: 1.3rem;
+	}
+	.headers h2 {
+		font-size: 1.6rem;
+	}
+	.closeBtn {
+		font-size: 1rem;
+	}
+	.formGroup label {
+		font-size: 1rem;
+	}
+	.inputWrapper input {
+		font-size: 1rem;
+		height: 1.5rem;
+	}
+	.modal {
+		height: 100%;
+		width: 80%;
+	}
+}
+@media (max-width: 72em) {
+	.headers {
+		height: 1.1rem;
+	}
+	.headers h2 {
+		font-size: 1.3rem;
+	}
+	.closeBtn {
+		font-size: 0.7rem;
+	}
+	.formGroup label {
+		font-size: 0.8rem;
+	}
+	.inputWrapper input {
+		font-size: 0.6rem;
+		height: 1.3rem;
+	}
+	.modal {
+		margin-left: 20%;
+		height: 100%;
+		width: 60%;
+	}
+}
+@media (max-width: 72em) {
+	.headers {
+		height: 1.1rem;
+	}
+	.headers h2 {
+		font-size: 1.3rem;
+	}
+	.closeBtn {
+		font-size: 0.7rem;
+	}
+	.formGroup label {
+		font-size: 0.8rem;
+	}
+	.inputWrapper input {
+		font-size: 0.6rem;
+		height: 1.3rem;
+	}
+	.modal {
+		margin-left: 20%;
+		height: 100%;
+		width: 60%;
+	}
+}
+@media (max-width: 58em) {
+	.modal {
+		margin-left: 20%;
+		height: 200vh;
+		width: 60%;
+	}
+}
+@media (max-width: 54em) {
+	.modal {
+		margin-left: 20%;
+		height: 227vh;
+		width: 60%;
+	}
+}
+@media (max-width: 48em) {
+	.headers {
+		height: 1.1rem;
+	}
+	.headers h2 {
+		font-size: 1.3rem;
+	}
+	.closeBtn {
+		font-size: 0.7rem;
+	}
+	.formGroup label {
+		font-size: 0.8rem;
+	}
+	.inputWrapper input {
+		font-size: 0.6rem;
+		height: 1.3rem;
+	}
+	.modal {
+		margin-left: 10%;
+		height: 190vh;
+		width: 80%;
+	}
+	.formRow {
+		display: grid;
+		grid-template-columns: 50%;
+	}
+	.formGroup {
+		width: 200%;
+	}
+}
+@media (max-width: 42em) {
+	.modal {
+		margin-left: 20%;
+		height: 440vh;
+		width: 60%;
+	}
+}
+@media (max-width: 24em) {
+	.modal {
+		margin-left: 10%;
+		height: 210vh;
+		width: 80%;
+	}
 }

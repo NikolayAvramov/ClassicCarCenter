@@ -2,33 +2,84 @@
 	background-color: white;
 	margin: 0;
 	padding: 0;
-	min-width: 100%;
+	width: 11.5rem;
 	border: 2px solid gray;
 	border-radius: 15px;
 	text-align: center;
 	margin-top: 6%;
-	height: 550px;
+	height: 17rem;
 }
 .card img {
 	width: 100%;
-	height: 250px;
+	height: 37%;
 	border-radius: 15px;
 }
 .card p {
 	margin-bottom: 15px;
-	font-size: 22px;
+	font-size: 0.7rem;
 }
-.card button {
-	margin-bottom: 70px;
-	background-color: rgb(193, 235, 142);
-	border-radius: 10px;
-}
-.views {
-	font-size: 17px;
-}
+
 .card h3 {
-	font-size: 36px;
+	font-size: 1.2rem;
 	border-bottom: 1px solid gray;
 	width: 95%;
 	margin-left: 10px;
+}
+@media (max-width: 107em) {
+	.card {
+		width: 10rem;
+		height: 15rem;
+	}
+	.card img {
+		height: 35%;
+		border-radius: 15px;
+	}
+	.card p {
+		font-size: 0.6rem;
+	}
+	.card h3 {
+		font-size: 1rem;
+	}
+}
+@media (max-width: 53em) {
+	.card {
+		width: 8rem;
+		height: 11rem;
+	}
+	.card p {
+		font-size: 0.5rem;
+		width: 80%;
+		margin-left: 10%;
+	}
+	.card h3 {
+		font-size: 0.7rem;
+	}
+}
+@media (max-width: 48em) {
+	.card {
+		width: 7rem;
+		height: 11rem;
+	}
+	.card p {
+		font-size: 0.4rem;
+		width: 80%;
+		margin-left: 10%;
+	}
+	.card h3 {
+		font-size: 0.7rem;
+	}
+}
+@media (max-width: 32em) {
+	.card {
+		width: 8rem;
+		height: 11rem;
+	}
+	.card p {
+		font-size: 0.5rem;
+		width: 80%;
+		margin-left: 10%;
+	}
+	.card h3 {
+		font-size: 0.7rem;
+	}
 }

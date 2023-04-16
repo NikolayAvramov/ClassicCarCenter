@@ -93,9 +93,9 @@ export function Details({setCars}) {
 			) : (
 				<>
 					{data ? (
-						<>
+						<div className={DetailsCss.sections}>
 							<section className={DetailsCss.imagePanel}>
-								<img src={selected.value} alt="" height="60%" width="90%" />
+								<img className={DetailsCss.primaryImg} src={selected.value} alt="" height="60%" width="90%" />
 
 								<div className={DetailsCss.secondaryImg}>
 									{img.map((data, i) => {
@@ -108,16 +108,16 @@ export function Details({setCars}) {
 								</div>
 							</section>
 							<section className={DetailsCss.infoPanel}>
-								<h4>{`${data.make} ${data.model}`}</h4>
+								<h4 className={DetailsCss.title}>{`${data.make} ${data.model}`}</h4>
 								<p className={DetailsCss.description}>{data.description}</p>
-								<p>
-									<strong>Price : </strong> ${data.price}
+								<p className={DetailsCss.row}>
+									<span className={DetailsCss.span}>Price : </span> ${data.price}
 								</p>
-								<p>
-									<strong>Type : </strong> {data.type}
+								<p className={DetailsCss.row}>
+									<span className={DetailsCss.span}>Type : </span> {data.type}
 								</p>
-								<p>
-									<strong>Year : </strong> {data.year}
+								<p className={DetailsCss.row}>
+									<span className={DetailsCss.span}>Year : </span> {data.year}
 								</p>
 
 								{isAuthenticated && (
@@ -125,7 +125,7 @@ export function Details({setCars}) {
 										{showMessageArea ? (
 											<div className={DetailsCss.contactArea}>
 												<textarea className={DetailsCss.textArea} name="" id="" cols="25" rows="2" value={message} onChange={e => setMessage(e.target.value)}></textarea>
-												<button className={DetailsCss.contactBtn} onClick={onClickSend}>
+												<button className={DetailsCss.sendBtn} onClick={onClickSend}>
 													Send
 												</button>
 												<button
@@ -149,17 +149,17 @@ export function Details({setCars}) {
 								{isOwner && (
 									<>
 										{" "}
-										<Button className={DetailsCss.buttons} onClick={onEditClick} type="button" size="sm" variant="outline-primary">
+										<button className={DetailsCss.buttons} onClick={onEditClick} type="button">
 											Edit
-										</Button>
-										<Button className={DetailsCss.buttons} variant="outline-danger" onClick={onDeleteClick}>
+										</button>
+										<button className={DetailsCss.buttons} type="button" onClick={onDeleteClick}>
 											{" "}
 											Delete
-										</Button>
+										</button>
 									</>
 								)}
 							</section>
-						</>
+						</div>
 					) : (
 						<Spinner className={DetailsCss.spinner} animation="border" variant="secondary" />
 					)}

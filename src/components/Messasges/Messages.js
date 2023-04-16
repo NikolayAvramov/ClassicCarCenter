@@ -32,13 +32,13 @@ export function Messages() {
 							<li key={message.objectId} className={MsgCss.row}>
 								<div className={MsgCss.p}>
 									<p className={MsgCss.from}>
-										<strong>From:</strong> {message.writer}
+										<span>From:</span> {message.writer}
 									</p>
 								</div>
 								<div className={MsgCss.p}>
 									<p className={MsgCss.text}>
 										{" "}
-										<strong> Message:</strong> {message.mesage}
+										<span> Message:</span> {message.mesage}
 									</p>
 								</div>
 								<div className={MsgCss.delBtn}>

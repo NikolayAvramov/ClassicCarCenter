@@ -1,11 +1,12 @@
 * {
 	margin: 0;
 	box-sizing: border-box;
-	font-size: 30px;
+	font-size: 1.5rem;
 }
 .containerPage {
 	background-image: url(../../fonts/login-font.jpg);
 	background-size: cover;
+	height: 84vh;
 }
 .inputBox {
 	padding-top: 30px;
@@ -13,7 +14,10 @@
 }
 
 .loginWrapper {
-	margin-left: 65vw;
+	font-size: 1.8rem;
+	margin-left: 60%;
+	width: auto;
+
 	color: darkorange;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
@@ -95,4 +99,42 @@
 	color: red;
 	font-size: 22px;
 	padding-top: 10px;
+}
+@media (max-width: 95em) {
+	.loginWrapper {
+		font-size: 1.4rem;
+		margin-left: 55%;
+	}
+	.containerPage {
+		height: 74vh;
+	}
+}
+@media (max-width: 57em) {
+	.loginWrapper {
+		margin-top: 12%;
+		font-size: 1.4rem;
+		margin-left: 45%;
+	}
+}
+@media (max-width: 46em) {
+	.loginWrapper {
+		font-size: 1.4rem;
+		margin-left: 30%;
+	}
+}
+@media (max-width: 33em) {
+	.loginWrapper {
+		font-size: 1rem;
+		margin-left: 20%;
+	}
+	.containerPage {
+		margin-top: 20%;
+		height: 77vh;
+	}
+}
+@media (max-width: 33em) {
+	.loginWrapper {
+		font-size: 0.7rem;
+		margin-left: 10%;
+	}
 }

@@ -1,51 +1,63 @@
 /*panel*/
+
 .container {
 	background-color: #c1c1c1;
-	width: 100vw;
-	height: 81vh;
+	width: 100%;
+	height: 79vh;
 }
-.container section {
-	display: inline-block;
-	margin-left: 20px;
+.row {
+	font-size: 0.8rem;
+}
+.span {
+	font-weight: 700;
+}
+.sections {
+	width: 100%;
+	display: flex;
+	height: 100%;
+	gap: 4%;
+}
+.primaryImg {
+	margin-left: 5%;
 }
 .imagePanel {
+	margin-left: 2%;
 	margin-top: 30px;
-	height: 87vh;
-	width: 47vw;
-	text-align: center;
+
+	width: 100%;
 }
 
-.secondaryImg div {
-	display: inline-block;
+.secondaryImg {
+	display: flex;
 	margin-top: 20px;
-	margin-left: 15px;
+
+	gap: 10px;
 }
 .secondaryImg div img {
-	width: 160px;
-	height: 120px;
+	width: 100%;
+	height: 100%;
 	border-radius: 10px;
 }
 
 .infoPanel {
-	position: absolute;
-	float: right;
-	height: 80vh;
-	width: 47vw;
+	width: 90%;
 	text-align: center;
 }
-button {
-	margin-left: 30px;
-}
-
-.description {
-	font-size: 22px;
-	height: 300px;
-}
 .buttons {
+	border: 1px solid gray;
+	height: auto;
+	background-color: rgb(209, 209, 194);
+	border-radius: 10px;
+	margin-left: 30px;
+	font-size: 1rem;
 	padding-top: 0;
-	width: auto;
-	height: 60px;
-	font-size: 40px;
+}
+.buttons:hover {
+	background-color: rgb(250, 158, 119);
+}
+.description {
+	font-size: 1rem;
+	height: auto;
 }
 .spinner {
 	margin: 20% 50%;
@@ -56,11 +68,77 @@ button {
 	border-radius: 10px;
 }
 .cancelBtn {
+	font-size: 1rem;
 	border-radius: 10px;
 	color: rgb(108, 79, 41);
 	background-color: rgb(238, 147, 147);
 }
+.sendBtn {
+	font-size: 1rem;
+	border-radius: 10px;
+	color: rgb(108, 79, 41);
+	background-color: rgb(124, 245, 225);
+}
 .textArea {
 	border: 1px solid black;
 	border-radius: 10px;
+	font-size: 1.2rem;
+}
+@media (max-width: 96em) {
+	.title {
+		font-size: 1rem;
+	}
+	.description {
+		font-size: 0.9rem;
+	}
+}
+@media (max-width: 76em) {
+	.description {
+		font-size: 0.7rem;
+	}
+	.textArea {
+		font-size: 1rem;
+	}
+}
+@media (max-width: 56em) {
+	.description {
+		font-size: 0.6rem;
+	}
+}
+@media (max-width: 36em) {
+	.imagePanel {
+		height: 90%;
+	}
+	.container {
+		background-color: #c1c1c1;
+		width: 100%;
+		height: 83vh;
+	}
+	.sections {
+		/* padding-top: 1px; */
+		display: grid;
+		gap: 0;
+		width: 90%;
+		height: 80%;
+		margin-left: 5%;
+	}
+	.description {
+		font-size: 0.5rem;
+	}
+	.row {
+		margin: 0;
+		font-size: 0.5rem;
+	}
+	.infoPanel {
+		height: 100%;
+	}
+	.textArea {
+		font-size: 0.6rem;
+	}
+	.buttons {
+		font-size: 0.7rem;
+	}
+	.contactBtn {
+		font-size: 1rem;
+	}
 }

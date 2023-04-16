@@ -74,8 +74,8 @@ export function Edit(data) {
 			<div className={EditCSS.modal}>
 				<div className={EditCSS.userContainer}>
 					<header className={EditCSS.headers}>
-						<h2>Edit car</h2>
-						<CloseButton onClick={closeEditView} />
+						<h2 className={EditCSS.title}>Edit car</h2>
+						<CloseButton className={EditCSS.closeBtn} onClick={closeEditView} />
 					</header>
 					<form onSubmit={onSubmitEdit}>
 						<div className={EditCSS.formRow}>

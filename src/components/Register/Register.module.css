@@ -1,10 +1,12 @@
 .containerPage {
 	background-image: url(../../fonts/login-font.jpg);
 	background-size: cover;
+	font-size: 1.6rem;
+	height: 84vh;
 }
 
 .registerWrapper {
-	margin-left: 1200px;
+	margin-left: 65%;
 	color: darkorange;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
@@ -80,4 +82,60 @@
 	padding-top: 30px;
 	font-size: 26px;
 	color: rgb(226, 25, 25);
+}
+@media (max-width: 97em) {
+	.containerPage {
+		font-size: 1.4rem;
+	}
+	.registerWrapper {
+		margin-left: 60%;
+	}
+}
+@media (max-width: 87em) {
+	.containerPage {
+		font-size: 1.3rem;
+	}
+	.registerWrapper {
+		margin-left: 54%;
+	}
+}
+@media (max-width: 67em) {
+	.containerPage {
+		font-size: 1.2rem;
+	}
+	.registerWrapper {
+		margin-left: 50%;
+	}
+}
+@media (max-width: 57em) {
+	.containerPage {
+		font-size: 1.2rem;
+	}
+	.registerWrapper {
+		margin-left: 40%;
+	}
+}
+@media (max-width: 47em) {
+	.containerPage {
+		font-size: 1.2rem;
+	}
+	.registerWrapper {
+		margin-left: 30%;
+	}
+}
+@media (max-width: 37em) {
+	.containerPage {
+		font-size: 1.2rem;
+	}
+	.registerWrapper {
+		margin-left: 20%;
+	}
+}
+@media (max-width: 28em) {
+	.containerPage {
+		font-size: 1.2rem;
+	}
+	.registerWrapper {
+		margin-left: 10%;
+	}
 }

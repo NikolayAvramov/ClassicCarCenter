@@ -59,7 +59,7 @@ export function Create({setIsAddShow}) {
 				<div className={CreateCSS.userContainer}>
 					<header className={CreateCSS.headers}>
 						<h2>Add new car</h2>
-						<CloseButton onClick={onClickChange} />
+						<CloseButton className={CreateCSS.closeBtn} onClick={onClickChange} />
 					</header>
 					<form onSubmit={createNew}>
 						<div className={CreateCSS.formRow}>

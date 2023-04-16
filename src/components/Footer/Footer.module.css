@@ -3,31 +3,26 @@
 	background-color: #ffffff;
 	color: #4b4c4d;
 	position: absolute;
-	margin-left: 650px;
-	max-height: 200px;
+	bottom: 0;
+	width: 100%;
 }
 
-.footerBasic ul {
+.listInline {
 	padding: 0;
 	list-style: none;
 	text-align: center;
-	font-size: 18px;
-	line-height: 1;
+	font-size: 1rem;
 	margin-bottom: 0;
 }
 
-.footerBasic li {
+.listInlineItem {
 	padding: 0 10px;
 }
 
-.footerBasic ul a {
+.listInlineItem a {
 	color: inherit;
 	text-decoration: none;
 	opacity: 0.8;
-}
-
-.footerBasic ul a:hover {
-	opacity: 1;
 }
 
 .footerBasic .social {
@@ -37,9 +32,9 @@
 
 .footerBasic .social > a {
 	font-size: 24px;
-	width: 70px;
-	height: 20px;
-	line-height: 40px;
+	width: 3%;
+	height: 1%;
+	line-height: 1.8rem;
 	display: inline-block;
 	text-align: center;
 	margin: 0 8px;
@@ -60,4 +55,15 @@
 }
 .listInlineItem {
 	display: inline-block;
+}
+@media (max-width: 40em) {
+	.footerBasic .social > a {
+		font-size: 13px;
+		width: 7%;
+		line-height: 1rem;
+	}
+
+	.listInlineItem a {
+		font-size: 0.5rem;
+	}
 }
