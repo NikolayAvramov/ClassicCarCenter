@@ -4,7 +4,6 @@ export function Card({info}) {
 	const navigate = useNavigate();
 	function onDetailsClick(e) {
 		navigate(`/details/${info.objectId}`);
-		console.log(info);
 	}
 
 	return (

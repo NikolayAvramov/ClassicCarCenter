@@ -16,11 +16,11 @@ export function Login({setUser}) {
 		e.preventDefault();
 		const result = await login(formValues);
 		const data = await result.json();
-		console.log(data, result);
+
 		if (!result.ok) {
 			setError(data.error);
 		} else {
-			setError(false);
+			setError("");
 
 			navigate("/");
 
